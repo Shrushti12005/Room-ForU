@@ -10,6 +10,15 @@ app.get("/", (req, res) => {
   res.send("RoomForU API Running");
 });
 
+app.post("/register", (req, res) => {
+  const { name, email, password, phone, role } = req.body;
+  if (!name || !email || !password){
+    return res.json({
+      data:null,
+       message:"All required fields must be filled"
+    })
+  }
+});
 app.listen(PORT, () => {
   console.log("Server running on port 5000");
 });
