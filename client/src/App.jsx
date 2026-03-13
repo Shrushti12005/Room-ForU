@@ -8,6 +8,7 @@ import Rooms from "./Pages/Room";
 import RoomDetails from "./Pages/RoomDetail";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Bookings from './Pages/Bookings';
 
 
 function App() {
@@ -20,9 +21,9 @@ function App() {
  
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/room" element={<Rooms></Rooms>}></Route>
-        <Route path="/roomdetail" element={<RoomDetails></RoomDetails>}></Route>
+        <Route path="/rooms" element={<Rooms></Rooms>}></Route>
+        <Route path="/bookings" element={<Bookings></Bookings>}></Route>
+        <Route path="/roomsdetail" element={<RoomDetails></RoomDetails>}></Route>
         
     
       </Routes>
