@@ -17,6 +17,7 @@ const checkJwtToken=(req, res, next)=>{
       success:false,
       message:"Invalid token",
       data:null,
+      error:e.message
     })
   }
 }

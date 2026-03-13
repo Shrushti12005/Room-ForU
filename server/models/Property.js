@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import  { Schema, model } from "mongoose";
 
 const propertySchema=new Schema({
       title:{
@@ -20,7 +20,7 @@ const propertySchema=new Schema({
     type:[String]
   },
   owner:{
-    type:mongoose.Schema.Types.ObjectId,
+    type:Schema.Types.ObjectId,
     ref:"User"
   },
 
@@ -29,5 +29,8 @@ const propertySchema=new Schema({
     enum:["pending","approved"],
     default:"pending"
   }
-
 },{timestamps:true})
+
+const Property=model("Property",propertySchema);
+
+export default Property;
