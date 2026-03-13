@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { postRegister, postLogin } from "./controllers/Auth.js";
-import Property from "./models/Property.js";
+import { addProperty , getAllProperties} from "./controllers/property.js";
 import authMiddleware from "./middleware/authMiddleware.js";
 
 dotenv.config();
@@ -23,36 +23,8 @@ app.get("/", (req, res) => {
 
 app.post("/register", postRegister );
 app.post("/login", postLogin);
-app.post("/Property",authMiddleware, async (req, res)=>{
-  try{
-
-    const {title,location,rent,description} = req.body;
-
-    const property = new Property({
-      title,
-      location,
-      rent,
-      description,
-      owner:req.user.id
-    });
-
-    await property.save();
-
-    res.json({
-      message:"Property added successfully",
-      data:property
-    });
-
-  }catch(e){
-
-    res.json({
-      message:"Server error",
-      error:e.message
-    });
-
-  }
-})
-
+app.post("/Property",authMiddleware, addProperty )
+app.get("/properties", getAllProperties)
 app.listen(PORT, () => {
   console.log("Server running on port 5000");
   connectDB();
