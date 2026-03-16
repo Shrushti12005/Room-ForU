@@ -53,4 +53,36 @@ const getAllProperties= async (req, res)=>{
   }
 }
 
-export {addProperty, getAllProperties};
+const searchProperties= async (req, res)=>{
+  try {
+    const { location, minRent, maxRent } = req.query;
+    const filter={status:"approved"};
+    if(location){
+      filter.location={ $regex: location, $options: "i" };
+    }
+    if(minRent || maxRent){
+      filter.rent={};
+      if(minRent){
+        filter.rent.$gte=Number(minRent);
+      }
+      if(maxRent){
+        filter.rent.$lte=Number(maxRent);
+      }
+    }
+    const properties = await Property.find(filter);
+
+    res.json({
+      message: "Properties fetched successfully",
+      data: properties
+    });
+
+  } catch (error) {
+    res.json({
+      message: "Server error",
+      error: error.message
+    });
+  }
+}
+
+
+export {addProperty, getAllProperties, searchProperties};
