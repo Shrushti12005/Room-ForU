@@ -1,6 +1,4 @@
 import { Schema, model } from "mongoose";
-import Property from "./Property";
-import User from "./Users";
 
 const bookingSchema=new Schema({
  property:{
@@ -15,7 +13,7 @@ const bookingSchema=new Schema({
      status:{
         type:String,
         enum:["pending","confirmed","cancelled"],
-        default:pending
+        default:"pending",
      },
      paymentStatus:{
         type:String,
