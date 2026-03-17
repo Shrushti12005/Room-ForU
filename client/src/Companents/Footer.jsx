@@ -36,7 +36,7 @@ function Footer() {
        Rooms
     </NavLink>
     <NavLink 
-      to="/room-details" 
+      to="/roomsdetail" 
       className={({ isActive }) => 
         isActive ? "d-block mb-2 text-success" : "d-block mb-2 text-success"
       }
