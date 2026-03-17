@@ -8,6 +8,8 @@ import Rooms from "./Pages/Room";
 import RoomDetails from "./Pages/RoomDetail";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import About from './Pages/About';
+import Contacts from './Pages/contacts';
 
 
 function App() {
@@ -23,8 +25,8 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/room" element={<Rooms></Rooms>}></Route>
         <Route path="/roomdetail" element={<RoomDetails></RoomDetails>}></Route>
-        
-    
+        <Route path="/about" element={<About></About>}></Route>
+        <Route path="/contacts" element={<Contacts></Contacts>}></Route>
       </Routes>
           <Footer></Footer>
     </Router>
