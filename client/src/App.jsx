@@ -10,7 +10,12 @@ import Login from "./Pages/Login";
 import Slider from "./Pages/Slider";
 
 import Register from "./Pages/Register";
+ contacts
+import About from './Pages/About';
+import Contacts from './Pages/contacts';
+
 import Bookings from './Pages/Bookings';
+ main
 
 
 function App() {
@@ -28,12 +33,20 @@ function App() {
         <Route path="/" element={<Slider></Slider>}></Route>
 
         <Route path="/login" element={<Login></Login>}></Route>
+ contacts
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/room" element={<Rooms></Rooms>}></Route>
+        <Route path="/roomdetail" element={<RoomDetails></RoomDetails>}></Route>
+        <Route path="/about" element={<About></About>}></Route>
+        <Route path="/contacts" element={<Contacts></Contacts>}></Route>
+
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
         <Route path="/bookings" element={<Bookings></Bookings>}></Route>
         <Route path="/roomsdetail" element={<RoomDetail></RoomDetail>}></Route>
 
         
     
+main
       </Routes>
           <Footer></Footer>
     </Router>
