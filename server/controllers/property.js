@@ -84,5 +84,18 @@ const searchProperties= async (req, res)=>{
   }
 }
 
+const getOwnerProperties=async (req, res) => {
+  try {
 
-export {addProperty, getAllProperties, searchProperties};
+    const properties = await Property.find({ owner: req.user.id });
+
+    res.json({
+      properties
+    });
+
+  } catch (e) {
+    res.json({ message: e.message });
+  }
+};
+
+export {addProperty, getAllProperties, searchProperties, getOwnerProperties};

@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { postRegister, postLogin } from "./controllers/Auth.js";
-import { addProperty , getAllProperties, searchProperties} from "./controllers/property.js";
+import { addProperty , getAllProperties, getOwnerProperties, searchProperties} from "./controllers/property.js";
 import authMiddleware from "./middleware/authMiddleware.js";
 import { getMyBookings, postBooking } from "./controllers/bookingControllers.js";
 
@@ -26,6 +26,7 @@ app.post("/register", postRegister );
 app.post("/login", postLogin);
 app.post("/Property",authMiddleware, addProperty )
 app.get("/properties", getAllProperties)
+app.get("/my-properties", authMiddleware, getOwnerProperties )
 app.get("/search", searchProperties)
 
 app.post("/booking", authMiddleware, postBooking )
