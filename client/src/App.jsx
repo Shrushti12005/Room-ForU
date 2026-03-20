@@ -13,6 +13,7 @@ import About from "./Pages/About";
 import Contacts from "./Pages/Contacts";
 import  BookingPage from './Pages/Bookings';
 import RoomDetail from  './Pages/RoomDetail';
+import Signup from './Pages/SighnUp';
 function App() {
   return (
     
@@ -26,6 +27,8 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/" element={<Slider></Slider>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/sighnup" element={<Signup></Signup>}></Route>
+
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/room" element={<Rooms></Rooms>}></Route>
         <Route path="/roomdetail" element={<RoomDetail></RoomDetail>}></Route>
