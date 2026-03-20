@@ -13,7 +13,6 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(upload.array("images", 5));
 app.use(express.json());
 const PORT=5000;
 
