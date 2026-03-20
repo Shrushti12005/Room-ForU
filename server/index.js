@@ -7,11 +7,13 @@ import { addProperty , deleteProperty, getAllProperties, getOwnerProperties, sea
 import authMiddleware from "./middleware/authMiddleware.js";
 import { getMyBookings, postBooking } from "./controllers/bookingControllers.js";
 import { approveProperty } from "./controllers/admin.js";
+import upload from "./middleware/upload.js";
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
+app.use(upload.array("images", 5));
 app.use(express.json());
 const PORT=5000;
 
@@ -25,7 +27,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", postRegister );
 app.post("/login", postLogin);
-app.post("/Property",authMiddleware, addProperty )
+app.post("/property",authMiddleware, upload.array("images", 5), addProperty )
 app.get("/properties", getAllProperties)
 app.get("/my-properties", authMiddleware, getOwnerProperties )
 app.get("/search", searchProperties)
