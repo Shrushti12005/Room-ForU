@@ -1,18 +1,15 @@
 import React from "react";
-<<<<<<< Updated upstream
+
 import { Link } from "react-router-dom";
 
-function HotelExperience() {
-=======
+
+
 import { useNavigate } from "react-router-dom";
 
 function HotelExperience() {
   const navigate = useNavigate();
 
-  const handleViewRooms = () => {
-    navigate("/rooms"); // redirect to rooms detail page
-  };
->>>>>>> Stashed changes
+
 
   return (
     
@@ -29,7 +26,7 @@ function HotelExperience() {
             style={{ borderRadius: "6px" }}
           />
 
-<<<<<<< Updated upstream
+
           {/* Play Button */}
          <Link to="/roomsdetail">
   <button
@@ -41,27 +38,9 @@ top: "290px", left: "10px", width: "150px", height: "70px", backgroundColor: "#0
     View Details
   </button>
 </Link>
-=======
-          {/* View Rooms Button (replacing video button) */}
-          <button
-            onClick={handleViewRooms}
-            style={{
-              position: "absolute",
-              top: "20px",
-              left: "20px",
-              padding: "12px 18px",
-              backgroundColor: "#0d5c4d",
-              borderRadius: "8px",
-              color: "white",
-              fontSize: "14px",
-              border: "none",
-              cursor: "pointer",
-              fontWeight: "600"
-            }}
-          >
-            View Rooms
-          </button>
->>>>>>> Stashed changes
+
+         
+ 
 
           {/* Small overlapping image */}
           <img
@@ -147,4 +126,4 @@ top: "290px", left: "10px", width: "150px", height: "70px", backgroundColor: "#0
   );
 }
 
-export default HotelExperience;
+export default HotelExperience

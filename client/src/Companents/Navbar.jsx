@@ -34,14 +34,10 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link fs-5 m-2" to="/roomsdetail">
-                  RoomsDetails
+                  Booking
                 </NavLink>
               </li>
-               <li className="nav-item">
-                <NavLink className="nav-link fs-5 m-2" to="/bookings">
-                  Bookings
-                </NavLink>
-              </li>
+              
               <li className="nav-item">
                 <NavLink className="nav-link fs-5 m-2" to="/login">
                   Login
