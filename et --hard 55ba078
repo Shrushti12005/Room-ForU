@@ -1,0 +1,60 @@
+[33m55ba078[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32maddRooms-page-design[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33ma5033e9[m HEAD@{1}: reset: moving to HEAD~1
+[33m551c601[m HEAD@{2}: reset: moving to HEAD~1
+[33mcafbcc5[m[33m ([m[1;31morigin/addRooms-page-design[m[33m)[m HEAD@{3}: commit: error resolved
+[33m551c601[m HEAD@{4}: checkout: moving from main to addRooms-page-design
+[33m8f42f54[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: pull: Fast-forward
+[33m51f3184[m HEAD@{6}: checkout: moving from addRooms-page-design to main
+[33m551c601[m HEAD@{7}: commit: basic changes added
+[33ma5033e9[m HEAD@{8}: commit: all api created
+[33m55ba078[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32maddRooms-page-design[m[33m)[m HEAD@{9}: commit: add rooms form created
+[33m92f7dd6[m HEAD@{10}: commit: basic changes added
+[33m8ef4f6b[m HEAD@{11}: checkout: moving from main to addRooms-page-design
+[33m51f3184[m HEAD@{12}: checkout: moving from addRooms-page-design to main
+[33m8ef4f6b[m HEAD@{13}: commit: basic changes added
+[33m6d3cf9e[m HEAD@{14}: commit: addProperty api updated
+[33m6f362f0[m HEAD@{15}: commit: upload middleware created
+[33m51f3184[m HEAD@{16}: checkout: moving from main to addRooms-page-design
+[33m51f3184[m HEAD@{17}: reset: moving to origin/main
+[33m51f3184[m HEAD@{18}: reset: moving to origin/main
+[33m3ed7d3f[m HEAD@{19}: commit: basic changes added
+[33m94b2f5a[m HEAD@{20}: checkout: moving from create-bookins-api to main
+[33mb3275c7[m[33m ([m[1;31morigin/create-bookins-api[m[33m, [m[1;32mcreate-bookins-api[m[33m)[m HEAD@{21}: commit: aproov status api created
+[33m05270e1[m HEAD@{22}: commit: delete property api created
+[33ma7623e6[m HEAD@{23}: commit: get owner propertis api created
+[33mc934f72[m HEAD@{24}: commit: getMyBookings api created
+[33m94b2f5a[m HEAD@{25}: checkout: moving from main to create-bookins-api
+[33m94b2f5a[m HEAD@{26}: checkout: moving from add-rooms-page-design to main
+[33m0b29d82[m HEAD@{27}: checkout: moving from main to add-rooms-page-design
+[33m94b2f5a[m HEAD@{28}: checkout: moving from add-rooms-page-design to main
+[33m0b29d82[m HEAD@{29}: checkout: moving from main to add-rooms-page-design
+[33m94b2f5a[m HEAD@{30}: checkout: moving from add-rooms-page-design to main
+[33m0b29d82[m HEAD@{31}: checkout: moving from main to add-rooms-page-design
+[33m94b2f5a[m HEAD@{32}: checkout: moving from main to main
+[33m94b2f5a[m HEAD@{33}: commit: tailwind configuration done
+[33m0b29d82[m HEAD@{34}: checkout: moving from add-rooms-page-design to main
+[33m0b29d82[m HEAD@{35}: checkout: moving from rooms-page-design to add-rooms-page-design
+[33m0b29d82[m HEAD@{36}: checkout: moving from main to rooms-page-design
+[33m0b29d82[m HEAD@{37}: pull: Fast-forward
+[33m9e47e0c[m HEAD@{38}: checkout: moving from create-property-api to main
+[33m70c2911[m[33m ([m[1;31morigin/create-property-api[m[33m)[m HEAD@{39}: commit: post booking api crated
+[33m276c86d[m HEAD@{40}: commit: booking model created
+[33mc0818b6[m HEAD@{41}: commit: search filter added
+[33m1d2ee6a[m HEAD@{42}: checkout: moving from main to create-property-api
+[33m9e47e0c[m HEAD@{43}: checkout: moving from login-register-api-design to main
+[33m4017a20[m[33m ([m[1;31morigin/login-register-api-design[m[33m)[m HEAD@{44}: checkout: moving from main to login-register-api-design
+[33m9e47e0c[m HEAD@{45}: checkout: moving from create-property-api to main
+[33m1d2ee6a[m HEAD@{46}: commit: getAllProperties api created
+[33m4f65cd9[m HEAD@{47}: commit: post properties api created
+[33mebe5b07[m HEAD@{48}: commit: property scgema created
+[33m9e47e0c[m HEAD@{49}: checkout: moving from main to create-property-api
+[33m9e47e0c[m HEAD@{50}: pull: Fast-forward
+[33m6a4dd80[m HEAD@{51}: checkout: moving from login-register-api-design to main
+[33m4017a20[m[33m ([m[1;31morigin/login-register-api-design[m[33m)[m HEAD@{52}: commit: middleware created
+[33mac00a7a[m HEAD@{53}: commit: login api created
+[33me90b92d[m HEAD@{54}: commit: register aname,
+[33m4ed0e61[m HEAD@{55}: commit: mobgodb connected
+[33m0cead93[m HEAD@{56}: commit: user schema created
+[33m1510d64[m HEAD@{57}: commit: register api creation started
+[33m6a4dd80[m HEAD@{58}: checkout: moving from main to login-register-api-design
+[33m6a4dd80[m HEAD@{59}: clone: from https://github.com/Shrushti12005/Room-ForU.git
