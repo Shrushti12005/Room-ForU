@@ -37,7 +37,7 @@ function AddRooms() {
       data.append("description", formData.description);
 
       images.forEach((img) => {
-        data.append("images", img); // must match backend
+        data.append("images", img); 
       });
 
       await axios.post(
