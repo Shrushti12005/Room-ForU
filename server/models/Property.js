@@ -16,9 +16,11 @@ const propertySchema=new Schema({
   description:{
     type:String
   },
-  images:{
-    type:[String]
-  },
+  images: [
+  {
+    type: String
+  }
+],
   owner:{
     type:Schema.Types.ObjectId,
     ref:"User"
