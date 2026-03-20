@@ -12,6 +12,7 @@ import Register from "./Pages/Register";
 import About from "./Pages/About";
 import Contacts from "./Pages/Contacts";
 import  BookingPage from './Pages/Bookings';
+import RoomDetail from  './Pages/RoomDetail';
 function App() {
   return (
     
