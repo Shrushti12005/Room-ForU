@@ -5,13 +5,13 @@ import Navbar from './Companents/Navbar';
 import Footer from './Companents/Footer';
 import Home from "./Pages/Home";
 import Rooms from "./Pages/Room";
-import RoomDetail from "./Pages/RoomDetail";
+import RoomsPage from "./Pages/RoomDetail";
 import Login from "./Pages/Login";
 import Slider from "./Pages/Slider";
 import Register from "./Pages/Register";
-import About from './Pages/About';
-import Contacts from './Pages/contacts';
-import Bookings from './Pages/Bookings';
+import About from "./Pages/About";
+import Contacts from "./Pages/Contacts";
+import  BookingPage from './Pages/Bookings';
 function App() {
   return (
     
@@ -20,12 +20,10 @@ function App() {
              <Navbar></Navbar>
              
       <Routes>
-    
-
+  
  
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/" element={<Slider></Slider>}></Route>
-
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/room" element={<Rooms></Rooms>}></Route>
@@ -34,8 +32,8 @@ function App() {
         <Route path="/contacts" element={<Contacts></Contacts>}></Route>
 
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
-        <Route path="/bookings" element={<Bookings></Bookings>}></Route>
-        <Route path="/roomsdetail" element={<RoomDetail></RoomDetail>}></Route>
+        <Route path="/book/:id" element={<BookingPage />} />
+        <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
 
         
       </Routes>

@@ -1,12 +1,22 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
+
+
+import { useNavigate } from "react-router-dom";
+
 function HotelExperience() {
+  const navigate = useNavigate();
+
+
+
   return (
-    <div className="container py-5">
+    
 
-      <div className="row align-items-center">
-
-        {/* LEFT IMAGE SECTION */}
+ <div className="container py-5">
+  <div className="row align-items-center">
+    {/* LEFT IMAGE SECTION */}
         <div className="col-lg-6 position-relative mb-4 mb-lg-0">
 
           <img
@@ -16,26 +26,21 @@ function HotelExperience() {
             style={{ borderRadius: "6px" }}
           />
 
+
           {/* Play Button */}
-          <div
-            style={{
-              position: "absolute",
-              top: "20px",
-              left: "20px",
-              width: "70px",
-              height: "70px",
-              backgroundColor: "#0d5c4d",
-              borderRadius: "8px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              fontSize: "28px",
-              cursor: "pointer",
-            }}
-          >
-            ▶
-          </div>
+         <Link to="/roomsdetail">
+  <button
+    style={{
+ position: "absolute",
+top: "290px", left: "10px", width: "150px", height: "70px", backgroundColor: "#0d5c4d", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: "20px", cursor: "pointer"
+    }}
+  >
+    View Details
+  </button>
+</Link>
+
+         
+ 
 
           {/* Small overlapping image */}
           <img
@@ -116,9 +121,9 @@ function HotelExperience() {
         </div>
 
       </div>
+      </div>
 
-    </div>
   );
 }
 
-export default HotelExperience;
+export default HotelExperience
