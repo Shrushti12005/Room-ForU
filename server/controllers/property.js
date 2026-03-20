@@ -84,5 +84,39 @@ const searchProperties= async (req, res)=>{
   }
 }
 
+const getOwnerProperties=async (req, res) => {
+  try {
 
-export {addProperty, getAllProperties, searchProperties};
+    const properties = await Property.find({ owner: req.user.id });
+
+    res.json({
+      properties
+    });
+
+  } catch (e) {
+    res.json({ message: e.message });
+  }
+};
+
+const deleteProperty=async (req, res) => {
+  try {
+
+    const property = await Property.findById(req.params.id);
+    if (!property) {
+      return res.json({ 
+        message: "Property not found" 
+      });
+    }
+    if (property.owner.toString() !== req.user.id) {
+      return res.json({
+         message: "Not authorized" 
+        });
+    }
+    await property.deleteOne();
+    res.json({ message: "Property deleted" });
+
+  } catch (e) {
+    res.json({ message: e.message });
+  }
+};
+export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty};

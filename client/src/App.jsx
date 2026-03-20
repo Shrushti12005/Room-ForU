@@ -26,14 +26,16 @@ function App() {
         <Route path="/" element={<Slider></Slider>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/room" element={<Rooms></Rooms>}></Route>
+        <Route path="/roomdetail" element={<RoomDetail></RoomDetail>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/contacts" element={<Contacts></Contacts>}></Route>
+
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
         <Route path="/book/:id" element={<BookingPage />} />
         <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
 
         
-    
       </Routes>
           <Footer></Footer>
     </Router>
