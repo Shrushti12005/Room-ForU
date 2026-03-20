@@ -33,6 +33,27 @@ const addProperty = async (req, res) => {
   }
 };
 
+const getAllProperties= async (req, res)=>{
+             try {
+
+    const properties = await Property.find({ status: "approved" })
+      .populate("owner", "name email");
+
+    res.json({
+      message: "Properties fetched successfully",
+      data: properties
+    });
+
+  } catch (error) {
+
+    res.json({
+      message: "Server error",
+      error: error.message
+    });
+
+  }
+}
+
 const searchProperties= async (req, res)=>{
   try {
     const { location, minRent, maxRent } = req.query;
