@@ -30,6 +30,30 @@ function MyBookings() {
     }
   };
 
+  const handleCancel = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.put(
+        `http://localhost:5000/cancel-booking/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      toast.success("Booking cancelled");
+
+      fetchBookings(); 
+
+    } catch (err) {
+      console.log(err);
+      toast.error("Cancel failed");
+    }
+  };
+
   return (
     <div className="container py-5">
       <h2 className="text-center mb-5">My Bookings</h2>
@@ -43,11 +67,13 @@ function MyBookings() {
         {bookings.map((booking) => (
           <div className="col-md-4" key={booking._id}>
 
-            <div className="card shadow-sm">
+            <div className="card shadow-sm h-100">
 
-              {/* Image */}
               <img
-                src={booking.property?.images?.[0]}
+                src={
+                  booking.property?.images?.[0] ||
+                  "https://via.placeholder.com/300"
+                }
                 alt={booking.property?.title}
                 className="card-img-top"
                 style={{ height: "200px", objectFit: "cover" }}
@@ -69,16 +95,34 @@ function MyBookings() {
                 </p>
 
                 <p className="mb-1">
-                  <strong>Check-In:</strong> {booking.checkIn?.slice(0, 10)}
+                  <strong>Check-In:</strong>{" "}
+                  {booking.checkIn?.slice(0, 10)}
                 </p>
 
-                <p>
-                  <strong>Check-Out:</strong> {booking.checkOut?.slice(0, 10)}
+                <p className="mb-1">
+                  <strong>Check-Out:</strong>{" "}
+                  {booking.checkOut?.slice(0, 10)}
                 </p>
 
-                <span className="badge bg-success py-2 px-3">
-                  Booked
+                <span
+                  className={`badge p-2 mt-3 ${
+                    booking.status === "pending"
+                      ? "bg-warning"
+                      : booking.status === "confirmed"
+                      ? "bg-success"
+                      : "bg-danger"
+                  }`}
+                >
+                  {booking.status}
                 </span>
+                {booking.status !== "cancelled" && (
+                  <button
+                    className="btn btn-danger btn-sm mt-3 w-100 "
+                    onClick={() => handleCancel(booking._id)}
+                  >
+                    Cancel Booking
+                  </button>
+                )}
 
               </div>
 
@@ -88,6 +132,7 @@ function MyBookings() {
         ))}
 
       </div>
+
     </div>
   );
 }
