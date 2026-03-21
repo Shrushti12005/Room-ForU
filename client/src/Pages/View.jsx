@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { MapPin ,BadgeIndianRupee } from "lucide-react";
 import axios from "axios";
 
 function RoomDetail() {
@@ -45,9 +46,15 @@ function RoomDetail() {
         ))}
       </div>
 
-      <h5>📍 {room.location}</h5>
-      <h5>💰 ₹{room.rent} / month</h5>
+<h5 className="d-flex align-items-center gap-2 ">
+  <MapPin size={20} color="blue" />
+  {room?.location}
+</h5>
 
+<h5 className="d-flex align-items-center gap-2 ">
+  <BadgeIndianRupee size={20} color="green" />
+  ₹{room?.rent} / month
+</h5>
       <p style={{ marginTop: "15px" }}>{room.description}</p>
 
       <div style={{
