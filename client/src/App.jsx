@@ -20,6 +20,7 @@ import View from './Pages/View';
 import Signup from './Pages/SighnUp';
 import RoomDetail from  './Pages/RoomDetail';
 import OwnerDashboard from './Pages/OwnerDashboard';
+import AdminDashboard from './Pages/AdminDashboard';
 function App() {
   return (
     
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/" element={<Slider></Slider>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/sighnup" element={<Signup></Signup>}></Route>
+        <Route path="/signup" element={<Signup></Signup>}></Route>
 
         <Route path="/register" element={<Register></Register>}></Route>
         
@@ -41,12 +42,12 @@ function App() {
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
         <Route path="/book/:id" element={<BookingPage />} />
         <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
-
         <Route path="/view/:id" element={<View />} />
 
 
          <Route path='my-bookings' element={<MyBookings></MyBookings>}></Route>
          <Route path='/owner-dashboard' element={<OwnerDashboard></OwnerDashboard>}></Route>
+         <Route path='/admin' element={<AdminDashboard></AdminDashboard>}></Route>
 
         
       </Routes>
