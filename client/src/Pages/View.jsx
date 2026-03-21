@@ -28,7 +28,6 @@ function RoomDetail() {
 
       <h2>{room.title}</h2>
 
-      {/* Images */}
       <div className="row my-4">
         {room.images?.map((img, index) => (
           <div className="col-md-4" key={index}>
@@ -51,7 +50,6 @@ function RoomDetail() {
 
       <p style={{ marginTop: "15px" }}>{room.description}</p>
 
-      {/* 🔥 OWNER DETAILS (NEW) */}
       <div style={{
         marginTop: "20px",
         padding: "15px",
@@ -59,9 +57,9 @@ function RoomDetail() {
         borderRadius: "8px"
       }}>
         <h5>Owner Details</h5>
-       <p><strong>Name:</strong> {room.owner?.name}</p>
-<p><strong>Email:</strong> {room.owner?.email}</p>
-<p><strong>Phone:</strong> {room.owner?.phone}</p>
+        <p><strong>Name:</strong> {room.owner?.name}</p>
+        <p><strong>Email:</strong> {room.owner?.email}</p>
+        <p><strong>Phone:</strong> {room.owner?.phone}</p>
       </div>
 
       <button
@@ -79,7 +77,32 @@ function RoomDetail() {
         Book Now
       </button>
 
+      <div className="mt-3 d-flex gap-2">
+        <a
+          href={`tel:${room.owner?.phone}`}
+          className="btn btn-outline-dark"
+        >
+          Call Owner
+        </a>
+
+        <a
+          href={`https://wa.me/91${room.owner?.phone}`}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            backgroundColor: "#25D366",
+            color: "white",
+            padding: "8px 15px",
+            borderRadius: "5px",
+            textDecoration: "none"
+          }}
+        >
+          WhatsApp
+        </a>
+
+      </div>
     </div>
+
   );
 }
 
