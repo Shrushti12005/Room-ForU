@@ -68,4 +68,27 @@ const cancelBooking = async (req, res) => {
        message: e.message });
   }
 };
-export { postBooking, getMyBookings, cancelBooking };
+
+const getOwnerBookings = async (req, res) => {
+  try {
+
+    const bookings = await Booking.find()
+      .populate({
+        path: "property",
+        match: { owner: req.user.id } 
+      })
+      .populate("student", "name email");
+
+    const filtered = bookings.filter(b => b.property !== null);
+
+    res.json({
+      message: "Owner bookings fetched",
+      success: true,
+      data: filtered
+    });
+
+  } catch (e) {
+    res.json({ message: e.message });
+  }
+};
+export { postBooking, getMyBookings, cancelBooking, getOwnerBookings };
