@@ -2,10 +2,10 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { postRegister, postLogin } from "./controllers/Auth.js";
+import { postRegister, postLogin } from "./controllers/auth.js";
 import { addProperty , deleteProperty, getAllProperties, getOwnerProperties, getSingleProperty, searchProperties} from "./controllers/property.js";
 import authMiddleware from "./middleware/authMiddleware.js";
-import { getMyBookings, postBooking, cancelBooking, getOwnerBookings } from "./controllers/bookingControllers.js";
+import { getMyBookings, postBooking, cancelBooking, getOwnerBookings, updateBookingStatus } from "./controllers/bookingControllers.js";
 import { approveProperty } from "./controllers/admin.js";
 import upload from "./middleware/upload.js";
 
@@ -37,6 +37,7 @@ app.post("/booking", authMiddleware, postBooking )
 app.get("/my-bookings", authMiddleware, getMyBookings);
 app.put("/cancel-booking/:id", authMiddleware, cancelBooking);
 app.get("/owner-bookings", authMiddleware, getOwnerBookings);
+app.put("/booking-status/:id", authMiddleware, updateBookingStatus);
 
 app.put("/approve/:id", authMiddleware, approveProperty);
 app.listen(PORT, () => {

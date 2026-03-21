@@ -91,4 +91,34 @@ const getOwnerBookings = async (req, res) => {
     res.json({ message: e.message });
   }
 };
-export { postBooking, getMyBookings, cancelBooking, getOwnerBookings };
+
+const updateBookingStatus = async (req, res) => {
+  try {
+    const { status } = req.body; 
+    const booking = await Booking.findById(req.params.id)
+      .populate("property");
+
+    if (!booking) {
+      return res.json({ message: "Booking not found" });
+    }
+
+    if (booking.property.owner.toString() !== req.user.id) {
+      return res.json({ message: "Not authorized" });
+    }
+
+    booking.status = status;
+    await booking.save();
+
+    res.json({
+      message: "Booking updated",
+      data: booking
+    });
+
+  } catch (e) {
+    res.json({
+      message: "Error updating booking",
+      error: e.message
+    });
+  }
+};
+export { postBooking, getMyBookings, cancelBooking, getOwnerBookings, updateBookingStatus };
