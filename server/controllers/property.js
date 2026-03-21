@@ -122,8 +122,12 @@ const deleteProperty=async (req, res) => {
 };
 const getSingleProperty = async (req, res) => {
   try {
-    const property = await Property.findById(req.params.id);
-
+    const property = await Property.findById(req.params.id).populate("owner", "name email phone");;
+if (!property) {
+  return res.status(404).json({
+    message: "Property not found"
+  });
+}
     res.json({
       data: property,
       success: true,
