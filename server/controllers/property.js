@@ -2,35 +2,36 @@ import dotenv from "dotenv"
 import Property from "../models/Property.js";
 dotenv.config();
 
-const addProperty=async (req, res)=>{
-  try{
+const addProperty = async (req, res) => {
+  try {
 
-    const {title,location,rent,description} = req.body;
+    const { title, location, rent, description } = req.body;
+
+    const imageUrls = req.files.map(file => file.path);
 
     const property = new Property({
       title,
       location,
       rent,
       description,
-      owner:req.user.id
+      images: imageUrls,  
+      owner: req.user.id
     });
 
     await property.save();
 
     res.json({
-      message:"Property added successfully",
-      data:property
+      message: "Property added successfully",
+      data: property
     });
 
-  }catch(e){
-
+  } catch (e) {
     res.json({
-      message:"Server error",
-      error:e.message
+      message: "Server error",
+      error: e.message
     });
-
   }
-}
+};
 
 const getAllProperties= async (req, res)=>{
              try {
@@ -119,4 +120,21 @@ const deleteProperty=async (req, res) => {
     res.json({ message: e.message });
   }
 };
-export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty};
+const getSingleProperty = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+
+    res.json({
+      data: property,
+      success: true,
+      message: "Property fetched successfully"
+    });
+
+  } catch (e) {
+    res.json({
+      message: "Error fetching property",
+      error: e.message
+    });
+  }
+};
+export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty, getSingleProperty};

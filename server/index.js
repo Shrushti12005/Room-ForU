@@ -3,10 +3,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { postRegister, postLogin } from "./controllers/Auth.js";
-import { addProperty , deleteProperty, getAllProperties, getOwnerProperties, searchProperties} from "./controllers/property.js";
+import { addProperty , deleteProperty, getAllProperties, getOwnerProperties, getSingleProperty, searchProperties} from "./controllers/property.js";
 import authMiddleware from "./middleware/authMiddleware.js";
-import { getMyBookings, postBooking } from "./controllers/bookingControllers.js";
+import { getMyBookings, postBooking, cancelBooking, getOwnerBookings } from "./controllers/bookingControllers.js";
 import { approveProperty } from "./controllers/admin.js";
+import upload from "./middleware/upload.js";
 
 dotenv.config();
 const app = express();
@@ -25,14 +26,17 @@ app.get("/", (req, res) => {
 
 app.post("/register", postRegister );
 app.post("/login", postLogin);
-app.post("/Property",authMiddleware, addProperty )
+app.post("/property",authMiddleware, upload.array("images", 5), addProperty )
 app.get("/properties", getAllProperties)
 app.get("/my-properties", authMiddleware, getOwnerProperties )
 app.get("/search", searchProperties)
+app.get("/property/:id", getSingleProperty)
 app.delete("/property/:id", authMiddleware, deleteProperty)
 
 app.post("/booking", authMiddleware, postBooking )
 app.get("/my-bookings", authMiddleware, getMyBookings);
+app.put("/cancel-booking/:id", authMiddleware, cancelBooking);
+app.get("/owner-bookings", authMiddleware, getOwnerBookings);
 
 app.put("/approve/:id", authMiddleware, approveProperty);
 app.listen(PORT, () => {
