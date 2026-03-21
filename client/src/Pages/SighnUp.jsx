@@ -12,7 +12,7 @@ function Signup() {
 
     if (name && email && password) {
       alert("Signup Successful!");
-      navigate("/"); // ✅ go to home
+      navigate("/");
     } else {
       alert("Please fill all fields");
     }
@@ -20,8 +20,14 @@ function Signup() {
 
   return (
     <div style={styles.container}>
+      
+      {/* Blur Overlay */}
+      <div style={styles.overlay}></div>
+
       <form onSubmit={handleSignup} style={styles.form}>
-        <h2>Signup</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+          Create Account 
+        </h2>
 
         <input
           type="text"
@@ -51,8 +57,11 @@ function Signup() {
           Signup
         </button>
 
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
+        <p style={{ marginTop: "10px", textAlign: "center" }}>
+          Already have an account?{" "}
+          <Link to="/login" style={{ color: "#0d5c4d" }}>
+            Login
+          </Link>
         </p>
       </form>
     </div>
@@ -62,30 +71,55 @@ function Signup() {
 const styles = {
   container: {
     height: "100vh",
+    backgroundImage:
+      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')", // 🔥 luxury room bg
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    position: "relative",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    background: "#f5f5f5"
+    alignItems: "center"
   },
+
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backdropFilter: "blur(8px)", // 🔥 blur effect
+    backgroundColor: "rgba(0,0,0,0.3)"
+  },
+
   form: {
-    background: "white",
+    position: "relative",
+    background: "rgba(255,255,255,0.15)", // 🔥 glass effect
     padding: "30px",
-    borderRadius: "10px",
-    width: "300px",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.2)"
+    borderRadius: "15px",
+    width: "320px",
+    backdropFilter: "blur(10px)",
+    boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
+    color: "white"
   },
+
   input: {
     width: "100%",
     padding: "10px",
-    margin: "10px 0"
+    margin: "10px 0",
+    borderRadius: "5px",
+    border: "none",
+    outline: "none"
   },
+
   button: {
     width: "100%",
     padding: "10px",
     background: "#0d5c4d",
     color: "white",
     border: "none",
-    cursor: "pointer"
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "10px"
   }
 };
 

@@ -12,7 +12,8 @@ import Register from "./Pages/Register";
 import About from "./Pages/About";
 import Contacts from "./Pages/Contacts";
 import  BookingPage from './Pages/Bookings';
-import RoomDetail from  './Pages/RoomDetail';
+import View from './Pages/View';
+
 import Signup from './Pages/SighnUp';
 function App() {
   return (
@@ -30,14 +31,14 @@ function App() {
         <Route path="/sighnup" element={<Signup></Signup>}></Route>
 
         <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/room" element={<Rooms></Rooms>}></Route>
-        <Route path="/roomdetail" element={<RoomDetail></RoomDetail>}></Route>
+        
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/contacts" element={<Contacts></Contacts>}></Route>
 
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
         <Route path="/book/:id" element={<BookingPage />} />
         <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
+        <Route path="/view/:id" element={<View />} />
 
         
       </Routes>

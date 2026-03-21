@@ -82,22 +82,22 @@ function BookingPage() {
             Booking: {room?.name}
           </h2>
 
-          <input
+          <input style={{"border":" 2px solid #ccc","padding":" 8px","border-radius": "4px" ,"outline": "none",  "transition: border":"0.3s", "box-shadow ":"0.3s", "border-color": "green", "box-shadow": "0 0 5px green"}}
             type="text"
             placeholder="Your Name"
-            className="form-control mb-3"
+            className="form-control mb-3 "
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <input
+          <input style={{"border":" 2px solid #ccc","padding": "8px","border-radius": "4px" ,"outline": "none",  "transition: border":"0.3s", "box-shadow ":"0.3s", "border-color": "green", "box-shadow": "0 0 5px green"}}
             type="date"
             className="form-control mb-3"
             value={checkIn}
             onChange={(e) => setCheckIn(e.target.value)}
             required
           />
-          <input
+          <input style={{"border":" 2px solid #ccc","padding": "8px","border-radius": "4px" ,"outline": "none",  "transition: border":"0.3s", "box-shadow ":"0.3s", "border-color": "green", "box-shadow": "0 0 5px green"}}
             type="date"
             className="form-control mb-3"
             value={checkOut}
