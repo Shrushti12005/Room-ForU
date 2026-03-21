@@ -120,4 +120,21 @@ const deleteProperty=async (req, res) => {
     res.json({ message: e.message });
   }
 };
-export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty};
+const getSingleProperty = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+
+    res.json({
+      data: property,
+      success: true,
+      message: "Property fetched successfully"
+    });
+
+  } catch (e) {
+    res.json({
+      message: "Error fetching property",
+      error: e.message
+    });
+  }
+};
+export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty, getSingleProperty};
