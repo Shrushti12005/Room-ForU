@@ -111,7 +111,7 @@ function OwnerDashboard() {
                 ))}
 
             </div>
-<hr className="my-5" />
+            <hr className="my-5" />
             <h4 style={{ color: "#0d5c4d", fontWeight: "600" }}>
                 Bookings on Your Rooms
             </h4>
@@ -147,7 +147,23 @@ function OwnerDashboard() {
                                 <p><strong>Email:</strong> {b.student?.email}</p>
 
                                 <p><strong>Status:</strong> {b.status}</p>
+                                <div className="d-flex gap-2">
 
+                                    <button
+                                        className="btn btn-success btn-sm"
+                                        onClick={() => updateStatus(b._id, "confirmed")}
+                                    >
+                                        Approve
+                                    </button>
+
+                                    <button
+                                        className="btn btn-danger btn-sm"
+                                        onClick={() => updateStatus(b._id, "cancelled")}
+                                    >
+                                        Reject
+                                    </button>
+
+                                </div>
                             </div>
 
                         </div>

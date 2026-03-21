@@ -1,57 +1,56 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (email && password) {
-      alert("Login Successful!");
-      navigate("/");
-    } else {
-      alert("Please fill all fields");
+    try {
+      const res = await axios.post("http://localhost:5000/login", {
+        email,
+        password
+      });
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+
+        toast.success("Login Successful");
+
+        navigate("/"); 
+      } else {
+        toast.error(res.data.message || "Login failed");
+      }
+
+    } catch (err) {
+      console.log(err);
+      toast.error("Server error");
     }
   };
 
   return (
     <div style={styles.container}>
       
-      {/* Overlay for blur */}
       <div style={styles.overlay}></div>
 
       <form onSubmit={handleLogin} style={styles.form}>
         <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-          Welcome Back 
+          Welcome Back
         </h2>
 
-        <input
-          type="name"
-          placeholder="Name"
-          style={styles.input}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-         <input
-          type="phone"
-          placeholder="Phone"
-          style={styles.input}
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
         <input
           type="email"
           placeholder="Email"
           style={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <input
@@ -60,16 +59,16 @@ function Login() {
           style={styles.input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
-       
-        
+
         <button type="submit" style={styles.button}>
           Login
         </button>
 
         <p style={{ marginTop: "10px", textAlign: "center" }}>
           Don't have an account?{" "}
-          <Link to="/sighnup" style={{ color: "#0d5c4d" }}>
+          <Link to="/signup" style={{ color: "#0d5c4d" }}>
             Signup
           </Link>
         </p>
@@ -82,7 +81,7 @@ const styles = {
   container: {
     height: "100vh",
     backgroundImage:
-      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')", // 🔥 hotel/room image
+      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     position: "relative",
@@ -97,13 +96,13 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backdropFilter: "blur(8px)", // 🔥 blur effect
+    backdropFilter: "blur(8px)",
     backgroundColor: "rgba(0,0,0,0.3)"
   },
 
   form: {
     position: "relative",
-    background: "rgba(255,255,255,0.15)", // 🔥 glass effect
+    background: "rgba(255,255,255,0.15)",
     padding: "30px",
     borderRadius: "15px",
     width: "320px",
