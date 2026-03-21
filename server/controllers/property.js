@@ -145,6 +145,9 @@ if (!property) {
 const getAllPropertiesAdmin = async (req, res) => {
   try {
 
+    if (req.user.role !== "admin") {
+  return res.json({ message: "Access denied" });
+}
     const properties = await Property.find()
       .populate("owner", "name email");
 
