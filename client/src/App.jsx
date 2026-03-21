@@ -10,7 +10,7 @@ import Login from "./Pages/Login";
 import Slider from "./Pages/Slider";
 import Register from "./Pages/Register";
 import AddRooms from './Pages/AddRooms';
-
+import MyBookings from './Pages/MyBookings';
 import About from "./Pages/About";
 import Contacts from "./Pages/Contacts";
 import  BookingPage from './Pages/Bookings';
@@ -23,8 +23,6 @@ function App() {
              <Navbar></Navbar>
              
       <Routes>
-  
- 
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/" element={<Slider></Slider>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
@@ -37,7 +35,7 @@ function App() {
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
         <Route path="/book/:id" element={<BookingPage />} />
         <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
-
+         <Route path='my-bookings' element={<MyBookings></MyBookings>}></Route>
         
       </Routes>
       <Toaster/>
