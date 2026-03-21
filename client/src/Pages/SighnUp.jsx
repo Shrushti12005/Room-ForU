@@ -1,27 +1,48 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [role, setRole] = useState("student");
+
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
-    if (name && email && password) {
-      alert("Signup Successful!");
-      navigate("/");
-    } else {
+    if (!name || !email || !password || !phone || !role) {
       alert("Please fill all fields");
+      return;
+    }
+
+    try {
+      const res = await axios.post("http://localhost:5000/register", {
+        name,
+        email,
+        password,
+        phone,
+        role
+      });
+
+      if (res.data.data) {
+        alert("Signup Successful!");
+        navigate("/login");
+      } else {
+        alert(res.data.message);
+      }
+    } catch (error) {
+      alert("Error while signing up");
+      console.log(error);
     }
   };
 
   return (
     <div style={styles.container}>
       
-      {/* Blur Overlay */}
       <div style={styles.overlay}></div>
 
       <form onSubmit={handleSignup} style={styles.form}>
@@ -53,6 +74,25 @@ function Signup() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
+        {/* ✅ NEW FIELD */}
+        <input
+          type="text"
+          placeholder="Phone"
+          style={styles.input}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+
+        {/* ✅ NEW FIELD */}
+        <select
+          style={styles.input}
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <option value="student">User</option>
+          <option value="owner">Owner</option>
+        </select>
+
         <button type="submit" style={styles.button}>
           Signup
         </button>
@@ -72,7 +112,7 @@ const styles = {
   container: {
     height: "100vh",
     backgroundImage:
-      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')", // 🔥 luxury room bg
+      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     position: "relative",
@@ -87,13 +127,13 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backdropFilter: "blur(8px)", // 🔥 blur effect
+    backdropFilter: "blur(8px)",
     backgroundColor: "rgba(0,0,0,0.3)"
   },
 
   form: {
     position: "relative",
-    background: "rgba(255,255,255,0.15)", // 🔥 glass effect
+    background: "rgba(255,255,255,0.15)",
     padding: "30px",
     borderRadius: "15px",
     width: "320px",
