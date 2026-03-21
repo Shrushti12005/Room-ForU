@@ -15,6 +15,7 @@ import About from "./Pages/About";
 import Contacts from "./Pages/Contacts";
 import  BookingPage from './Pages/Bookings';
 import RoomDetail from  './Pages/RoomDetail';
+import OwnerDashboard from './Pages/OwnerDashboard';
 function App() {
   return (
     
@@ -36,6 +37,7 @@ function App() {
         <Route path="/book/:id" element={<BookingPage />} />
         <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
          <Route path='my-bookings' element={<MyBookings></MyBookings>}></Route>
+         <Route path='/owner-dashboard' element={<OwnerDashboard></OwnerDashboard>}></Route>
         
       </Routes>
       <Toaster/>
