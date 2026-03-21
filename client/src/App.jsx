@@ -9,6 +9,7 @@ import RoomsPage from "./Pages/RoomDetail";
 import Login from "./Pages/Login";
 import Slider from "./Pages/Slider";
 import Register from "./Pages/Register";
+import AddRooms from './Pages/AddRooms';
 
 import About from "./Pages/About";
 import Contacts from "./Pages/Contacts";
