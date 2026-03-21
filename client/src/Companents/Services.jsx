@@ -74,8 +74,7 @@ function ServicesAmenities() {
           </h2>
 
           <p style={{color:"#777"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Ut elit tellus luctus nec ullamcorper mattis.
+           Enjoy a comfortable and relaxing stay with our thoughtfully designed rooms and premium amenities. We provide high-speed WiFi, air-conditioned spaces, and modern interiors to ensure a pleasant experience for every guest. Our services include 24/7 customer support, secure booking, and well-maintained, hygienic environments. Whether you are traveling for business or leisure, we strive to offer convenience, comfort, and quality that makes your stay truly memorable.
           </p>
         </div>
 

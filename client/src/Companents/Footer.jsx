@@ -43,14 +43,7 @@ function Footer() {
     >
        Room Details
     </NavLink>
-    <NavLink 
-      to="/bookings" 
-      className={({ isActive }) => 
-        isActive ? "d-block mb-2 text-success" : "d-block mb-2 text-success"
-      }
-    >
-         Bookings
-    </NavLink>
+   
     <NavLink 
       to="/login" 
       className={({ isActive }) => 

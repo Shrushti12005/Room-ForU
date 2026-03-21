@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+function Signup() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-
-
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
 
-    if (email && password) {
-      alert("Login Successful!");
+    if (name && email && password) {
+      alert("Signup Successful!");
       navigate("/");
     } else {
       alert("Please fill all fields");
@@ -24,28 +21,22 @@ function Login() {
   return (
     <div style={styles.container}>
       
-      {/* Overlay for blur */}
+      {/* Blur Overlay */}
       <div style={styles.overlay}></div>
 
-      <form onSubmit={handleLogin} style={styles.form}>
+      <form onSubmit={handleSignup} style={styles.form}>
         <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-          Welcome Back 
+          Create Account 
         </h2>
 
         <input
-          type="name"
+          type="text"
           placeholder="Name"
           style={styles.input}
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-         <input
-          type="phone"
-          placeholder="Phone"
-          style={styles.input}
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+
         <input
           type="email"
           placeholder="Email"
@@ -61,16 +52,15 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-       
-        
+
         <button type="submit" style={styles.button}>
-          Login
+          Signup
         </button>
 
         <p style={{ marginTop: "10px", textAlign: "center" }}>
-          Don't have an account?{" "}
-          <Link to="/sighnup" style={{ color: "#0d5c4d" }}>
-            Signup
+          Already have an account?{" "}
+          <Link to="/login" style={{ color: "#0d5c4d" }}>
+            Login
           </Link>
         </p>
       </form>
@@ -82,7 +72,7 @@ const styles = {
   container: {
     height: "100vh",
     backgroundImage:
-      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')", // 🔥 hotel/room image
+      "url('https://img.pikbest.com/backgrounds/20210729/book-room-hotel-stay-at-cartoon-girl-front-desk-tour-world-orange-green-blue-plant_6071587.jpg!w700wp')", // 🔥 luxury room bg
     backgroundSize: "cover",
     backgroundPosition: "center",
     position: "relative",
@@ -133,4 +123,4 @@ const styles = {
   }
 };
 
-export default Login;
+export default Signup;

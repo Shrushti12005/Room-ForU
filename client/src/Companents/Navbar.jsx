@@ -1,7 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
 
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -32,15 +35,11 @@ function Navbar() {
                   Rooms
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link fs-5 m-2" to="/roomsdetail">
-                  Booking
-                </NavLink>
-              </li>
+             
               
               <li className="nav-item">
-                <NavLink className="nav-link fs-5 m-2" to="/login">
-                  Login
+                <NavLink className="nav-link fs-5 m-2" to="/sighnup">
+                  Sign Up
                 </NavLink>
               </li>
               
@@ -49,8 +48,8 @@ function Navbar() {
 
             <form className="d-flex" role="search">
             
-              <button className="btn btn-outline-success" type="submit">
-                BookNow
+              <button className="btn btn-outline-success" type="submit" onClick={() => navigate("/login")}>
+                Login
               </button>
             </form>
           </div>

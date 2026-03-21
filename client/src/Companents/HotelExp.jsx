@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 import { useNavigate } from "react-router-dom";
 
 function HotelExperience() {
@@ -28,15 +29,29 @@ function HotelExperience() {
 
 
           {/* Play Button */}
-         <Link to="/roomsdetail">
+         <Link to="/rooms">
   <button
-    style={{
- position: "absolute",
-top: "290px", left: "10px", width: "150px", height: "70px", backgroundColor: "#0d5c4d", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: "20px", cursor: "pointer"
-    }}
-  >
-    View Details
-  </button>
+  onClick={() => navigate("/rooms")}
+  style={{
+    position: "absolute",
+    top: window.innerWidth < 768 ? "230px" : "290px", // 🔥 mobile moved more up
+    left: "10px",
+    width: "150px",
+    height: "70px",
+    backgroundColor: "#0d5c4d",
+    borderRadius: "8px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+    fontSize: "20px",
+    cursor: "pointer"
+    
+  }}
+>
+  View Details
+</button>
+
 </Link>
 
          
