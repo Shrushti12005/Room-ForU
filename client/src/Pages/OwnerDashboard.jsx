@@ -6,21 +6,23 @@ function OwnerDashboard() {
     const [properties, setProperties] = useState([]);
     const [bookings, setBookings] = useState([]);
 
+    const token = localStorage.getItem("token");
+
     useEffect(() => {
+        if (!token) {
+            toast.error("Please login first");
+            return;
+        }
         fetchProperties();
         fetchBookings();
     }, []);
-
-    const token = localStorage.getItem("token");
 
     const fetchProperties = async () => {
         try {
             const res = await axios.get(
                 "http://localhost:5000/my-properties",
                 {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                    headers: { Authorization: `Bearer ${token}` }
                 }
             );
 
@@ -37,9 +39,7 @@ function OwnerDashboard() {
             const res = await axios.get(
                 "http://localhost:5000/owner-bookings",
                 {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                    headers: { Authorization: `Bearer ${token}` }
                 }
             );
 
@@ -50,14 +50,33 @@ function OwnerDashboard() {
         }
     };
 
+    // ✅ FIXED
+    const updateStatus = async (id, status) => {
+        try {
+            await axios.put(
+                `http://localhost:5000/booking-status/${id}`,
+                { status },
+                {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            );
+
+            toast.success("Booking updated");
+            fetchBookings();
+
+        } catch (err) {
+            console.log(err);
+            toast.error("Update failed");
+        }
+    };
+
+    // ✅ FIXED
     const handleDelete = async (id) => {
         try {
             await axios.delete(
                 `http://localhost:5000/property/${id}`,
                 {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                    headers: { Authorization: `Bearer ${token}` }
                 }
             );
 
@@ -71,108 +90,147 @@ function OwnerDashboard() {
     };
 
     return (
-        <div className="container mt-4 py-5 px-3" style={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
+        <div
+            className="container mt-4 py-5 px-3"
+            style={{ background: "#f4f7f6", minHeight: "100vh" }}
+        >
+            <h2 className="mb-5 text-center fw-bold text-dark">
+                Owner Dashboard
+            </h2>
 
-            <h2 className="mb-4 text-center">Owner Dashboard</h2>
+            {/* 🔹 PROPERTIES */}
+            <h4 className="mb-3 fw-semibold" style={{ color: "#0d5c4d" }}>
+                Your Rooms
+            </h4>
 
-            <h4 style={{ color: "#0d5c4d", fontWeight: "600" }}>Your Rooms</h4>
             <div className="row g-4 mb-5">
-
+                {properties.length === 0 && (
+                    <p className="text-muted">No properties added yet</p>
+                )}
                 {properties.map((prop) => (
                     <div className="col-md-4" key={prop._id}>
-                        <div className="card shadow-sm">
-
+                        <div
+                            className="card border-0 shadow-sm h-100"
+                            style={{ borderRadius: "15px" }}
+                        >
                             <img
                                 src={prop.images?.[0]}
                                 className="card-img-top"
-                                style={{ height: "200px", objectFit: "cover" }}
+                                style={{
+                                    height: "200px",
+                                    objectFit: "cover",
+                                    borderTopLeftRadius: "15px",
+                                    borderTopRightRadius: "15px"
+                                }}
                             />
 
                             <div className="card-body">
-                                <h5>{prop.title}</h5>
-                                <p className="lead mb-1">₹{prop.rent}</p>
-                                <p className="my-0">{prop.location}</p>
-                                <p>{prop.description}</p>
+                                <h5 className="fw-bold">{prop.title}</h5>
+
+                                <p className="text-success fw-semibold mb-1">
+                                    ₹{prop.rent} / month
+                                </p>
+
+                                <p className="text-muted mb-1">
+                                    📍 {prop.location}
+                                </p>
+
+                                <p className="small text-secondary">
+                                    {prop.description?.slice(0, 60)}...
+                                </p>
 
                                 <button
-                                    className="btn btn-sm w-100"
+                                    className="btn w-100 mt-2"
                                     style={{
-                                        backgroundColor: "#dc3545",
+                                        background: "linear-gradient(45deg,#dc3545,#ff6b6b)",
                                         color: "white",
-                                        borderRadius: "6px"
+                                        borderRadius: "8px"
                                     }}
+                                    onClick={() => handleDelete(prop._id)}
                                 >
-                                    Delete
+                                    Delete Property
                                 </button>
                             </div>
-
                         </div>
                     </div>
                 ))}
-
             </div>
             <hr className="my-5" />
-            <h4 style={{ color: "#0d5c4d", fontWeight: "600" }}>
+            <h4 className="mb-3 fw-semibold" style={{ color: "#0d5c4d" }}>
                 Bookings on Your Rooms
             </h4>
             <div className="row g-4">
-
-                {bookings?.length === 0 && (
-                    <p>No bookings yet</p>
+                {bookings.length === 0 && (
+                    <p className="text-muted">No bookings yet</p>
                 )}
 
-                {bookings?.map((b) => (
+                {bookings.map((b) => (
                     <div className="col-md-4" key={b._id}>
-
-                        <div className="card shadow-sm border-0" style={{ borderRadius: "12px" }}>
+                        <div
+                            className="card border-0 shadow-sm h-100"
+                            style={{ borderRadius: "15px" }}
+                        >
                             <img
                                 src={b.property?.images?.[0]}
                                 className="card-img-top"
-                                style={{ height: "200px", objectFit: "cover" }}
+                                style={{
+                                    height: "200px",
+                                    objectFit: "cover",
+                                    borderTopLeftRadius: "15px",
+                                    borderTopRightRadius: "15px"
+                                }}
                             />
 
                             <div className="card-body">
-                                <h5>{b.property?.title}</h5>
+                                <h5 className="fw-bold">
+                                    {b.property?.title}
+                                </h5>
 
-                                <span
-                                    className={`badge ${b.status === "pending"
-                                        ? "bg-warning"
-                                        : b.status === "confirmed"
-                                            ? "bg-success"
-                                            : "bg-danger"
-                                        }`}
-                                >
-                                    {b.status}
-                                </span>
-                                <p><strong>Email:</strong> {b.student?.email}</p>
+                                <p className="mb-1">
+                                    <strong>Email:</strong>{" "}
+                                    {b.student?.email}
+                                </p>
+                                <p>
+                                    <strong>Status:</strong>{" "}
+                                    <span
+                                        className={
+                                            b.status === "confirmed"
+                                                ? "text-success fw-semibold"
+                                                : b.status === "cancelled"
+                                                ? "text-danger fw-semibold"
+                                                : "text-warning fw-semibold"
+                                        }
+                                    >
+                                        {b.status}
+                                    </span>
+                                </p>
 
-                                <p><strong>Status:</strong> {b.status}</p>
-                                <div className="d-flex gap-2">
-
+                                <div className="d-flex gap-2 mt-2">
                                     <button
-                                        className="btn btn-success btn-sm"
-                                        onClick={() => updateStatus(b._id, "confirmed")}
+                                        className="btn btn-success btn-sm w-100"
+                                        disabled={b.status === "confirmed"}
+                                        onClick={() =>
+                                            updateStatus(b._id, "confirmed")
+                                        }
                                     >
                                         Approve
                                     </button>
 
                                     <button
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() => updateStatus(b._id, "cancelled")}
+                                        className="btn btn-danger btn-sm w-100"
+                                        disabled={b.status === "cancelled"}
+                                        onClick={() =>
+                                            updateStatus(b._id, "cancelled")
+                                        }
                                     >
                                         Reject
                                     </button>
-
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 ))}
-
             </div>
-
         </div>
     );
 }
