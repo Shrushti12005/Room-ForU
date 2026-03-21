@@ -8,7 +8,7 @@ const bookingSchema = new Schema({
   },
   student: {
     type: Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
     required: true
   },
 
