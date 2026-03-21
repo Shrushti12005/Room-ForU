@@ -141,4 +141,19 @@ if (!property) {
     });
   }
 };
-export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty, getSingleProperty};
+
+const getAllPropertiesAdmin = async (req, res) => {
+  try {
+
+    const properties = await Property.find()
+      .populate("owner", "name email");
+
+    res.json({
+      data: properties
+    });
+
+  } catch (e) {
+    res.json({ message: e.message });
+  }
+};
+export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty, getSingleProperty, getAllPropertiesAdmin};
