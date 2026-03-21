@@ -8,7 +8,7 @@ function OwnerDashboard() {
 
   useEffect(() => {
     fetchProperties();
-  
+    fetchBookings();
   }, []);
 
   const token = localStorage.getItem("token");
@@ -32,7 +32,23 @@ function OwnerDashboard() {
     }
   };
 
- 
+  const fetchBookings = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/owner-bookings",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+     setBookings(res.data?.data || []);
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to load bookings");
+    }
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -92,6 +108,41 @@ function OwnerDashboard() {
 
       </div>
 
+      {/* 🔥 BOOKINGS */}
+      <h4>Bookings on Your Rooms</h4>
+      <div className="row g-4">
+
+        {bookings?.length === 0 && (
+          <p>No bookings yet</p>
+        )}
+
+        {bookings?.map((b) => (
+          <div className="col-md-4" key={b._id}>
+
+            <div className="card shadow-sm">
+
+              <img
+                src={b.property?.images?.[0]}
+                className="card-img-top"
+                style={{ height: "200px", objectFit: "cover" }}
+              />
+
+              <div className="card-body">
+                <h5>{b.property?.title}</h5>
+
+                <p><strong>Student:</strong> {b.student?.name}</p>
+                <p><strong>Email:</strong> {b.student?.email}</p>
+
+                <p><strong>Status:</strong> {b.status}</p>
+
+              </div>
+
+            </div>
+
+          </div>
+        ))}
+
+      </div>
 
     </div>
   );
