@@ -141,4 +141,22 @@ if (!property) {
     });
   }
 };
-export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty, getSingleProperty};
+
+const getAllPropertiesAdmin = async (req, res) => {
+  try {
+
+    if (req.user.role !== "admin") {
+  return res.json({ message: "Access denied" });
+}
+    const properties = await Property.find()
+      .populate("owner", "name email");
+
+    res.json({
+      data: properties
+    });
+
+  } catch (e) {
+    res.json({ message: e.message });
+  }
+};
+export {addProperty, getAllProperties, searchProperties, getOwnerProperties, deleteProperty, getSingleProperty, getAllPropertiesAdmin};

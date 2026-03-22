@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { postRegister, postLogin } from "./controllers/auth.js";
-import { addProperty , deleteProperty, getAllProperties, getOwnerProperties, getSingleProperty, searchProperties} from "./controllers/property.js";
+import { addProperty , deleteProperty, getAllProperties, getOwnerProperties, getSingleProperty, searchProperties, getAllPropertiesAdmin} from "./controllers/property.js";
 import authMiddleware from "./middleware/authMiddleware.js";
 import { getMyBookings, postBooking, cancelBooking, getOwnerBookings, updateBookingStatus } from "./controllers/bookingControllers.js";
 import { approveProperty } from "./controllers/admin.js";
@@ -39,6 +39,7 @@ app.put("/cancel-booking/:id", authMiddleware, cancelBooking);
 app.get("/owner-bookings", authMiddleware, getOwnerBookings);
 app.put("/booking-status/:id", authMiddleware, updateBookingStatus);
 
+app.get("/admin/properties", authMiddleware, getAllPropertiesAdmin);
 app.put("/approve/:id", authMiddleware, approveProperty);
 app.listen(PORT, () => {
   console.log("Server running on port 5000");
