@@ -17,13 +17,23 @@ function Login() {
         email,
         password
       });
+
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.data));
 
         toast.success("Login Successful");
 
-        navigate("/"); 
+        const role = res.data.data.role;
+
+        if (role === "admin") {
+          navigate("/admin");
+        } else if (role === "owner") {
+          navigate("/owner-dashboard");
+        } else {
+          navigate("/"); // student
+        }
+
       } else {
         toast.error(res.data.message || "Login failed");
       }
@@ -36,7 +46,6 @@ function Login() {
 
   return (
     <div style={styles.container}>
-      
       <div style={styles.overlay}></div>
 
       <form onSubmit={handleLogin} style={styles.form}>
