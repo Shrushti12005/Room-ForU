@@ -33,9 +33,7 @@ function App() {
         <Route path="/" element={<Slider></Slider>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
-
         <Route path="/register" element={<Register></Register>}></Route>
-        
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/contacts" element={<Contacts></Contacts>}></Route>
         <Route path="/addrooms" element={<AddRooms></AddRooms>}></Route>
@@ -43,8 +41,6 @@ function App() {
         <Route path="/book/:id" element={<BookingPage />} />
         <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
         <Route path="/view/:id" element={<View />} />
-
-
          <Route path='my-bookings' element={<MyBookings></MyBookings>}></Route>
          <Route path='/owner-dashboard' element={<OwnerDashboard></OwnerDashboard>}></Route>
          <Route path='/admin' element={<AdminDashboard></AdminDashboard>}></Route>
