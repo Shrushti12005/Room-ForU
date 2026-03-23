@@ -20,7 +20,7 @@ function OwnerDashboard() {
     const fetchProperties = async () => {
         try {
             const res = await axios.get(
-                "http://localhost:5000/my-properties",
+                `${import.meta.env.VITE_API_URL}/my-properties`,
                 {
                     headers: { Authorization: `Bearer ${token}` }
                 }
@@ -37,7 +37,7 @@ function OwnerDashboard() {
     const fetchBookings = async () => {
         try {
             const res = await axios.get(
-                "http://localhost:5000/owner-bookings",
+                `${import.meta.env.VITE_API_URL}/owner-bookings`,
                 {
                     headers: { Authorization: `Bearer ${token}` }
                 }
@@ -50,11 +50,10 @@ function OwnerDashboard() {
         }
     };
 
-    // ✅ FIXED
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-                `http://localhost:5000/booking-status/${id}`,
+                `${import.meta.env.VITE_API_URL}/booking-status/${id}`,
                 { status },
                 {
                     headers: { Authorization: `Bearer ${token}` }
@@ -70,11 +69,10 @@ function OwnerDashboard() {
         }
     };
 
-    // ✅ FIXED
     const handleDelete = async (id) => {
         try {
             await axios.delete(
-                `http://localhost:5000/property/${id}`,
+                `${import.meta.env.VITE_API_URL}/property/${id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` }
                 }
@@ -98,7 +96,6 @@ function OwnerDashboard() {
                 Owner Dashboard
             </h2>
 
-            {/* 🔹 PROPERTIES */}
             <h4 className="mb-3 fw-semibold" style={{ color: "#0d5c4d" }}>
                 Your Rooms
             </h4>

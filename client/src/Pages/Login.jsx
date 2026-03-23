@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/login", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/login`, {
         email,
         password
       });
@@ -23,7 +23,7 @@ function Login() {
 
         toast.success("Login Successful");
 
-        navigate("/"); 
+        navigate("/");
       } else {
         toast.error(res.data.message || "Login failed");
       }
@@ -36,7 +36,7 @@ function Login() {
 
   return (
     <div style={styles.container}>
-      
+
       <div style={styles.overlay}></div>
 
       <form onSubmit={handleLogin} style={styles.form}>

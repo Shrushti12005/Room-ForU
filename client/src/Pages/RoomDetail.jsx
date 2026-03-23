@@ -13,7 +13,7 @@ function RoomsPage() {
 
   const fetchRooms = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/properties");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/properties`);
       setRooms(res.data.data);
     } catch (err) {
       console.log(err);
@@ -36,7 +36,7 @@ function RoomsPage() {
             }}>
               <div style={{ overflow: "hidden" }}>
                 <img
-                  src={room.images?.[0] || "https://via.placeholder.com/300"}
+                  src={room.images?.[0] || `${import.meta.env.VITE_API_URL}/uploads/placeholder.jpg`}
                   alt={room.title}
                   style={{
                     width: "100%",
