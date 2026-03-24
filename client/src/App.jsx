@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./Companents/ProtectedRoute";
 import { Toaster } from 'react-hot-toast';
 import Navbar from './Companents/Navbar';
 import Footer from './Companents/Footer';
@@ -33,21 +34,54 @@ function App() {
         <Route path="/" element={<Slider></Slider>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
-
         <Route path="/register" element={<Register></Register>}></Route>
-        
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/contacts" element={<Contacts></Contacts>}></Route>
-        <Route path="/addrooms" element={<AddRooms></AddRooms>}></Route>
         <Route path="/rooms" element={<Rooms></Rooms>}></Route>
-        <Route path="/book/:id" element={<BookingPage />} />
-        <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
+          <Route path="/roomsdetail" element={<RoomsPage></RoomsPage>}></Route>
         <Route path="/view/:id" element={<View />} />
+      <Route 
+  path="/book/:id" 
+  element={
+    <ProtectedRoute allowedRoles={["student"]}>
+      <BookingPage />
+    </ProtectedRoute>
+  }
+/>
+      
+        <Route 
+  path="/my-bookings" 
+  element={
+    <ProtectedRoute allowedRoles={["student"]}>
+      <MyBookings />
+    </ProtectedRoute>
+  }
+/>
+       <Route 
+  path="/owner-dashboard" 
+  element={
+    <ProtectedRoute allowedRoles={["owner"]}>
+      <OwnerDashboard />
+    </ProtectedRoute>
+  }
+/>
 
-
-         <Route path='my-bookings' element={<MyBookings></MyBookings>}></Route>
-         <Route path='/owner-dashboard' element={<OwnerDashboard></OwnerDashboard>}></Route>
-         <Route path='/admin' element={<AdminDashboard></AdminDashboard>}></Route>
+<Route 
+  path="/addrooms" 
+  element={
+    <ProtectedRoute allowedRoles={["owner"]}>
+      <AddRooms />
+    </ProtectedRoute>
+  }
+/>
+    <Route 
+  path="/admin" 
+  element={
+    <ProtectedRoute allowedRoles={["admin"]}>
+      <AdminDashboard />
+    </ProtectedRoute>
+  }
+/>
 
         
       </Routes>
