@@ -16,7 +16,7 @@ function AdminDashboard() {
   const fetchProperties = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/admin/properties",
+        `${import.meta.env.VITE_API_URL}/admin/properties`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -34,7 +34,7 @@ function AdminDashboard() {
 
   const handleApprove = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/approve/${id}`, {}, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/approve/${id}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -51,7 +51,7 @@ function AdminDashboard() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/property/${id}`,
+        `${import.meta.env.VITE_API_URL}/property/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -89,7 +89,6 @@ function AdminDashboard() {
   <p>₹{prop.rent}</p>
   <p>{prop.location}</p>
 
-  {/* ✅ STATUS */}
   <p>
     Status:{" "}
     <span
@@ -104,7 +103,6 @@ function AdminDashboard() {
 
   <div className="d-flex gap-2">
 
-    {/* VIEW */}
     <button
       className="btn btn-outline-dark btn-sm"
       onClick={() => navigate(`/room/${prop._id}`)} // ✅ FIXED
@@ -112,7 +110,6 @@ function AdminDashboard() {
       View
     </button>
 
-    {/* APPROVE */}
     <button
       className="btn btn-success btn-sm"
       disabled={prop.status === "approved"}
@@ -125,7 +122,6 @@ function AdminDashboard() {
       {prop.status === "approved" ? "Approved" : "Approve"}
     </button>
 
-    {/* REJECT */}
     <button
       className="btn btn-danger btn-sm"
       onClick={() => handleDelete(prop._id)}

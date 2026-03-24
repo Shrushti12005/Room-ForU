@@ -37,11 +37,11 @@ function AddRooms() {
       data.append("description", formData.description);
 
       images.forEach((img) => {
-        data.append("images", img); // must match backend
+        data.append("images", img); 
       });
 
       await axios.post(
-        "http://localhost:5000/property",
+        `${import.meta.env.VITE_API_URL}/property`,
         data,
         {
           headers: {

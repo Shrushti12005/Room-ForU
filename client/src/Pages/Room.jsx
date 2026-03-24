@@ -13,7 +13,7 @@ function RoomsPage() {
 
   const fetchRooms = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/properties");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/properties`);
       setRoomsData(res.data?.data || []);
     } catch (err) {
       console.log(err);
