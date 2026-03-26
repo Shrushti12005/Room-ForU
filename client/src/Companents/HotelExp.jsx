@@ -1,63 +1,41 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
-
-
-
-
 import { useNavigate } from "react-router-dom";
-
+import { PhoneCall } from "lucide-react";
 function HotelExperience() {
   const navigate = useNavigate();
 
-
-
   return (
-    
+    <div className="container py-5">
+      <div className="row align-items-center">
 
- <div className="container py-5">
-  <div className="row align-items-center">
-    {/* LEFT IMAGE SECTION */}
         <div className="col-lg-6 position-relative mb-4 mb-lg-0">
 
           <img
             src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
             alt="room"
             className="img-fluid"
-            style={{ borderRadius: "6px" }}
+            style={{ borderRadius: "8px" }}
           />
 
+          <button
+            onClick={() => navigate("/rooms")}
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#0d5c4d",
+              borderRadius: "6px",
+              border: "none",
+              color: "white",
+              fontSize: "16px",
+              cursor: "pointer",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
+            }}
+          >
+            View Rooms
+          </button>
 
-          {/* Play Button */}
-         <Link to="/rooms">
-  <button
-  onClick={() => navigate("/rooms")}
-  style={{
-    position: "absolute",
-    top: window.innerWidth < 768 ? "230px" : "290px", // 🔥 mobile moved more up
-    left: "10px",
-    width: "150px",
-    height: "70px",
-    backgroundColor: "#0d5c4d",
-    borderRadius: "8px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    fontSize: "20px",
-    cursor: "pointer"
-    
-  }}
->
-  View Details
-</button>
-
-</Link>
-
-         
- 
-
-          {/* Small overlapping image */}
           <img
             src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
             alt="small room"
@@ -67,68 +45,63 @@ function HotelExperience() {
               position: "absolute",
               bottom: "-30px",
               right: "30px",
-              borderRadius: "6px",
+              borderRadius: "8px",
               boxShadow: "0 5px 15px rgba(0,0,0,0.2)"
             }}
           />
 
         </div>
 
-        {/* RIGHT TEXT SECTION */}
         <div className="col-lg-6">
 
-          <p style={{letterSpacing:"2px",fontSize:"12px",color:"#555"}}>
-            THE CONVENIENT HOTEL
+          <p style={{ letterSpacing: "2px", fontSize: "12px", color: "#555" }}>
+            FIND YOUR PERFECT STAY
           </p>
 
-          <h2 style={{fontWeight:"700",fontSize:"36px"}}>
-            Enjoy unforgettable <br/>
-            experiences in our hotels
+          <h2 style={{ fontWeight: "700", fontSize: "36px" }}>
+            Comfortable living made <br />
+            simple with RoomForU
           </h2>
 
           <div className="row mt-4">
 
             <div className="col-md-6">
-              <p style={{color:"#666"}}>
-                Risus consequat donec vel mi diam lobortis maximus
-                laoreet nisi. Fames torquent neque duis pharetra urna.
-                Fermentum vitae mus neque metus.
+              <p style={{ color: "#666" }}>
+                Discover verified rooms tailored for students and professionals.
+                We ensure safe, affordable, and comfortable living spaces in your preferred locations.
               </p>
             </div>
 
             <div className="col-md-6">
-              <p style={{color:"#666"}}>
-                Sapien himenaeos sollicitudin habitant hac lacinia
-                ridiculus volutpat nisl nascetur curae ad taciti per
-                sapien dolor. Eu posuere congue luctus.
+              <p style={{ color: "#666" }}>
+                Easily browse, compare, and book rooms in just a few clicks.
+                Manage your bookings and stay stress-free with our simple platform.
               </p>
             </div>
 
           </div>
-
-          {/* Reservation */}
           <div className="d-flex align-items-center mt-4">
 
             <div
               style={{
-                width:"50px",
-                height:"50px",
-                borderRadius:"50%",
-                background:"#3f8f84",
-                display:"flex",
-                alignItems:"center",
-                justifyContent:"center",
-                color:"white",
-                fontSize:"20px",
-                marginRight:"15px"
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                background: "#0d5c4d",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontSize: "20px",
+                marginRight: "15px"
               }}
             >
-              📞
+             <PhoneCall size={24} style={{ color: "white" }} />
             </div>
 
             <div>
-              <strong>Reservation</strong>
-              <div>+6221-2002-2012</div>
+              <strong>Need Help?</strong>
+              <div>+91 98765 43210</div>
             </div>
 
           </div>
@@ -136,9 +109,8 @@ function HotelExperience() {
         </div>
 
       </div>
-      </div>
-
+    </div>
   );
 }
 
-export default HotelExperience
+export default HotelExperience;

@@ -6,17 +6,14 @@ function HeroSlider() {
   return (
     <div id="carouselExampleDark" className="carousel slide">
 
-      {/* Indicators */}
       <div className="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
       </div>
 
-      {/* Slides */}
       <div className="carousel-inner">
 
-        {/* Slide 1 */}
         <div className="carousel-item active" data-bs-interval="4000">
           <div style={{ position: "relative" }}>
             <img
@@ -26,7 +23,6 @@ function HeroSlider() {
               alt="Room"
             />
 
-            {/* Dark overlay */}
             <div style={{
               position: "absolute",
               top: 0,
@@ -45,8 +41,6 @@ function HeroSlider() {
             </div>
           </div>
         </div>
-
-        {/* Slide 2 */}
         <div className="carousel-item" data-bs-interval="4000">
           <div style={{ position: "relative" }}>
             <img
@@ -75,7 +69,6 @@ function HeroSlider() {
           </div>
         </div>
 
-        {/* Slide 3 */}
         <div className="carousel-item" data-bs-interval="4000">
           <div style={{ position: "relative" }}>
             <img
@@ -106,7 +99,6 @@ function HeroSlider() {
 
       </div>
 
-      {/* Controls */}
       <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
         <span className="carousel-control-prev-icon"></span>
       </button>
