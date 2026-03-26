@@ -1,34 +1,39 @@
 import React from "react";
+import {
+  PhoneCall,
+  WashingMachine,
+  Wifi,
+  ShieldCheck
+} from "lucide-react";
 
 function ServicesAmenities() {
 
   const services = [
     {
-      icon: "📞",
-      title: "24/7 Room Service",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus luctus nec ullamcorper mattis pulvinar."
+      icon: <PhoneCall size={50} />,
+      title: "24/7 Support",
+      desc: "Get instant help anytime during your stay. Our support team is always available to assist you."
     },
     {
-      icon: "🧺",
+      icon: <WashingMachine size={50} />,
       title: "Laundry Service",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus luctus nec ullamcorper mattis pulvinar."
+      desc: "Enjoy hassle-free laundry facilities for a clean and comfortable living experience."
     },
     {
-      icon: "📶",
-      title: "Full WiFi Access",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus luctus nec ullamcorper mattis pulvinar."
+      icon: <Wifi size={50} />,
+      title: "High-Speed WiFi",
+      desc: "Stay connected with fast and reliable internet for work, study, and entertainment."
     },
     {
-      icon: "📹",
-      title: "Hi-Class Security",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus luctus nec ullamcorper mattis pulvinar."
+      icon: <ShieldCheck size={50} />,
+      title: "Secure Stay",
+      desc: "Your safety matters. We provide verified properties with secure and trusted environments."
     }
   ];
 
   return (
-    <div style={{background:"#f4f4f4", padding:"80px 0"}}>
+    <div style={{ background: "#f4f4f4", padding: "80px 0" }}>
 
-      {/* Internal CSS */}
       <style>
         {`
         .service-card{
@@ -37,14 +42,13 @@ function ServicesAmenities() {
         }
 
         .service-icon{
-          font-size:55px;
           transition: transform 0.3s ease;
           display:inline-block;
-          color:#4f7f77;
+          color:#0d5c4d;
         }
 
         .service-card:hover .service-icon{
-          transform: scale(1.4);
+          transform: scale(1.3);
         }
 
         .service-title{
@@ -63,25 +67,25 @@ function ServicesAmenities() {
 
       <div className="container">
 
-        {/* Section Title */}
+
         <div className="text-center mb-5">
-          <p style={{letterSpacing:"2px",fontSize:"12px"}}>
+          <p style={{ letterSpacing: "2px", fontSize: "12px" }}>
             SERVICES & AMENITIES
           </p>
 
-          <h2 style={{fontWeight:"700"}}>
+          <h2 style={{ fontWeight: "700" }}>
             Our Services & Amenities
           </h2>
 
-          <p style={{color:"#777"}}>
-           Enjoy a comfortable and relaxing stay with our thoughtfully designed rooms and premium amenities. We provide high-speed WiFi, air-conditioned spaces, and modern interiors to ensure a pleasant experience for every guest. Our services include 24/7 customer support, secure booking, and well-maintained, hygienic environments. Whether you are traveling for business or leisure, we strive to offer convenience, comfort, and quality that makes your stay truly memorable.
+          <p style={{ color: "#777" }}>
+            We provide everything you need for a comfortable and stress-free stay.
+            From secure and verified rooms to modern amenities, our platform ensures
+            convenience, safety, and a smooth booking experience for students and professionals.
           </p>
         </div>
-
-        {/* Services Grid */}
         <div className="row">
 
-          {services.map((service,index)=>(
+          {services.map((service, index) => (
             <div key={index} className="col-md-3 col-sm-6">
 
               <div className="service-card">
