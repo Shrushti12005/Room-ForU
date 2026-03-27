@@ -12,7 +12,7 @@ import Register from "./Pages/Register";
 import AddRooms from './Pages/AddRooms';
 import MyBookings from './Pages/MyBookings';
 import About from "./Pages/About";
-import Contacts from "./Pages/Contacts";
+import Contacts from './Pages/contacts';
 import  BookingPage from './Pages/Bookings';
 
 import View from './Pages/View';
