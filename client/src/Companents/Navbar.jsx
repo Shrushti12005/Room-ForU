@@ -8,7 +8,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem("user"); // ✅ fixed
     navigate("/login");
   };
 
@@ -37,15 +37,30 @@ function Navbar() {
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
+            {/* Home */}
             <li className="nav-item">
               <NavLink className="nav-link fs-5 m-2" to="/">
                 Home
               </NavLink>
             </li>
 
+
             <li className="nav-item">
               <NavLink className="nav-link fs-5 m-2" to="/rooms">
                 Rooms
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link fs-5 m-2" to="/about">
+                About
+              </NavLink>
+            </li>
+
+            {/* ✅ NEW: Contact */}
+            <li className="nav-item">
+              <NavLink className="nav-link fs-5 m-2" to="/contacts">
+                Contact
               </NavLink>
             </li>
 
@@ -66,7 +81,7 @@ function Navbar() {
                 </li>
 
                 <li className="nav-item">
-                  <NavLink className="nav-link fs-5 m-2" to="/addRooms">
+                  <NavLink className="nav-link fs-5 m-2" to="/addrooms">
                     Add Room
                   </NavLink>
                 </li>
