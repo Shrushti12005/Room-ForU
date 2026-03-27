@@ -8,7 +8,6 @@ function Footer() {
       <div className="container my-5">
   <div className="row g-4">
     
-    {/* Card 1 */}
     <div className="col-12 col-sm-6 col-md-3" >
       <div className="card h-100  p-3 shadow-sm border-0"  style={{"backgroundColor":"#f0efea"}}>
         <NavLink className="card-title fs-5 text-success "><i >RoomForU</i></NavLink>
@@ -16,7 +15,6 @@ function Footer() {
       </div>
     </div>
 
-    {/* Card 2 */}
    <div className="col-12 col-sm-6 col-md-3">
   <div className="card h-100 p-3 shadow-sm border-0" style={{backgroundColor:"#f0efea"}}><br/>
     <NavLink 
@@ -55,7 +53,6 @@ function Footer() {
   </div>
 </div>
 
-    {/* Card 3 */}
     <div className="col-12 col-sm-6 col-md-3">
   <div className="card h-100 p-3 shadow-sm border-0" style={{backgroundColor:"#f0efea"}}><br/>
     <NavLink 
@@ -104,9 +101,9 @@ function Footer() {
      <div className="col-12 col-sm-6 col-md-3">
       <div className="card h-100 p-3 shadow-sm border-0 text-success"  style={{"backgroundColor":"#f0efea"} }>
         <NavLink className="card-title fs-5"> Reach-Us</NavLink><br/>
-        <p className="card-title"> Jln Cempaka Wangi No 22, Jakarta - Indonesia<br/>
-+6221-2002-2012<br/>
-support@yourdomain.tld</p>
+        <p className="card-title">Pune, Maharashtra, India<br/>
++91 9876543210<br/>
+support@roomforu.com</p>
 
         
 
