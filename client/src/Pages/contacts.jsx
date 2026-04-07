@@ -6,7 +6,6 @@ function Contact() {
   return (
     <div className="bg-light text-dark">
 
-      {/* HERO SECTION */}
       <section className="bg-success text-white py-5 text-center">
         <div className="container">
           <h1 className="display-5 fw-bold">Contact Us</h1>
@@ -16,12 +15,10 @@ function Contact() {
         </div>
       </section>
 
-      {/* CONTACT INFO + FORM */}
       <section className="py-5">
         <div className="container">
           <div className="row g-4">
 
-            {/* CONTACT DETAILS */}
             <div className="col-md-5">
               <div className="card shadow h-100">
                 <div className="card-body">
@@ -46,7 +43,6 @@ function Contact() {
               </div>
             </div>
 
-            {/* CONTACT FORM */}
             <div className="col-md-7">
               <div className="card shadow h-100">
                 <div className="card-body">
@@ -102,7 +98,6 @@ function Contact() {
         </div>
       </section>
 
-      {/* MAP / EXTRA SECTION */}
       <section className="bg-white py-5 text-center">
         <div className="container">
           <h2 className="fw-bold mb-4">Our Location</h2>
@@ -123,7 +118,6 @@ function Contact() {
         </div>
       </section>
 
-      {/* CTA */}
      <section
   className="text-white py-5 text-center bg-success"
   style={{

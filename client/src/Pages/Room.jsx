@@ -13,7 +13,6 @@ function RoomsPage() {
   const [searchLocation, setSearchLocation] = useState("");
   const [maxRent, setMaxRent] = useState("");
 
-  // ✅ focus states
   const [isLocationFocused, setIsLocationFocused] = useState(false);
   const [isRentFocused, setIsRentFocused] = useState(false);
 
@@ -56,9 +55,9 @@ function RoomsPage() {
     <div className="container py-5">
       <h2 className="text-center mb-4">Our Rooms</h2>
 
-      <div className="row mb-4">
+      <div className="row mb-4 ">
 
-        <div className="col-md-5">
+        <div className="col-md-5 mb-1 ">
           <input
             type="text"
             placeholder="Search by location..."
@@ -79,7 +78,7 @@ function RoomsPage() {
           />
         </div>
 
-        <div className="col-md-5">
+        <div className="col-md-5 mb-1">
           <input
             type="number"
             placeholder="Max Rent (₹)"
@@ -100,7 +99,7 @@ function RoomsPage() {
           />
         </div>
 
-        <div className="col-md-2">
+        <div className="col-md-2 mb-1">
           <button
             className="btn btn-success w-100"
             onClick={() => {

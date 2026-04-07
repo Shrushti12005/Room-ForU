@@ -105,7 +105,7 @@ function AdminDashboard() {
 
     <button
       className="btn btn-outline-dark btn-sm"
-      onClick={() => navigate(`/room/${prop._id}`)} // ✅ FIXED
+     onClick={() => navigate(`/view/${prop._id}`)}
     >
       View
     </button>
